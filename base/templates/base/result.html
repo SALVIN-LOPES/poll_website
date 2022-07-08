@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+{% block content %}
+    
+{% for response in poll_responses%}
+<!-- <section style="margin:10px"> 
+    <div>
+        <h5>{{response.index}}) {{response.question}} </h5>
+    <div>
+        <div>a] {{response.option1}} {% if response.choose == 1 %}(Selected){%endif%}</div>
+        <div>b] {{response.option2}} {% if response.choose == 2 %}(Selected){%endif%}</div>
+        <div>c] {{response.option3}} {% if response.choose == 3 %}(Selected){%endif%}</div>
+        <div>d] {{response.option4}} {% if response.choose == 4 %}(Selected){%endif%}</div>
+    </div>
+</section> -->
+
+<!-- addming a new result card template -->
+<div class="card_container">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{response.index}}]  {{response.question}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">a] {{response.option1}} -->{% if response.choose == 1 %}(Selected){%endif%}</li>
+          <li class="list-group-item">b] {{response.option2}} -->{% if response.choose == 2 %}(Selected){%endif%}</li>
+          <li class="list-group-item">c] {{response.option3}} -->{% if response.choose == 3 %}(Selected){%endif%}</li>
+          <li class="list-group-item">d] {{response.option4}} -->{% if response.choose == 4 %}(Selected){%endif%}</li>
+        </ul>
+    </div>
+</div>
+
+
+<style>
+    .card{
+        margin-bottom: 1rem;
+    }
+    .card-body a{
+        text-decoration: none;
+        border-radius: 50%;
+    }
+    .card_container{
+        display:flex;
+        flex-direction:row;
+        float: left;
+        margin-left:10px;
+        margin-top:10px;
+      }
+
+
+
+
+
+
+
+
+
+
+      
+</style>
+{%endfor%}
+{% endblock %}

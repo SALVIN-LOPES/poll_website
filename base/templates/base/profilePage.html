@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2 style="margin-left:20px;">{% block title %} Profile {% endblock %}</h2>
+
+<!-- profile page new template -->
+{% if user.is_authenticated %}
+<div class="mb-3 row" style="margin-left:20px;">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.name }}">
+    </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.email }}">
+    </div>
+</div>
+<div class="mb-3 row" style="margin-left:20px;">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Phone</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.phone }}">
+    </div>
+</div>
+
+
+<!-- polls made by user  -->
+<div class="card_heading" style="margin-left:20px;"> Polls created by {{ user.name }} </div>
+    {% for poll in polls%}
+
+        <!-- new template for profile page -->
+        <div class="card_container">
+          <div class="card " style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{poll.index}}] {{poll.question}}</h5>
+            </div>
+            <div><strong>Total number of contributors : {{poll.total_responses}}</strong></div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">a] {{poll.option1}} --> ({{poll.total_option1}})</li>
+              <li class="list-group-item">b] {{poll.option2}} --> ({{poll.total_option2}})</li>
+              <li class="list-group-item">c] {{poll.option3}} --> ({{poll.total_option3}})</li>
+              <li class="list-group-item">d] {{poll.option4}} --> ({{poll.total_option4}})</li>
+            </ul>
+        </div>
+        <div>
+        
+        
+       
+
+
+    {%endfor%}
+
+{% else %}
+
+<h2>first login to view the details</h2>
+
+{% endif %}
+
+<style>
+    .card{
+        margin-bottom: 1rem;
+    }
+    .card-body a{
+        text-decoration: none;
+        border-radius: 50%;
+    }
+    .card_heading{
+      margin-top:20px;
+      margin-bottom:20px;
+      font-size: 2rem;
+  {% comment %} margin:10px; {% endcomment %}
+  }
+    .card_container{
+      display:flex;
+      flex-direction:row;
+      float: left;
+      margin-left:10px;
+    }
+</style>
+
+{% endblock %}
+

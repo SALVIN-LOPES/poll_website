@@ -1,0 +1,22 @@
+{% extends 'main.html' %} {% block content %}
+<div class="center">
+  <h1>Register</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="txt_field">
+      <!-- <input type="text" placeholder="{{ field.label }}" value="{{ field }}" required /> -->
+      {% comment %} <label class>{{ field.label }}</label> {% endcomment %}
+      {{ field }}
+    </div>
+    {% endfor %}
+
+    <div class="pass">Forgot Password?</div>
+    <input type="submit" value="Register" />
+    <div class="signup_link">
+      Already registered? <a href="{% url 'login' %}">SignIn</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <!-- <section style="margin:10px"> 
+            <div>
+                <h5>{{poll.question}}  ({{poll.created_by.name}})</h5>
+            <div>
+                <div><input value="1" checked name="poll" type="radio" id="poll1"> <label for="poll1">{{poll.option1}}<label></div>
+                <div><input value="2" name="poll" type="radio" id="poll2"> <label for="poll2">{{poll.option2}}<label> </div>
+                <div><input value="3" name="poll" type="radio" id="poll3"> <label for="poll3">{{poll.option3}}<label> </div>
+                <div><input value="4" name="poll" type="radio" id="poll4"> <label for="poll4">{{poll.option4}}<label> </div>
+            </div>
+            <input type="submit" value="Submit" />
+        </section> -->
+
+        <!-- new poll template  -->
+        <div class="card-container">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{poll.question}}</h5>
+                  <h4>Created by : {{poll.created_by.name}}</h4>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <div style="margin-left:10px"><input value="1" checked name="poll" type="radio" id="poll1"> <label for="poll1">{{poll.option1}}<label></div>
+                    <div style="margin-left:10px"><input value="2" name="poll" type="radio" id="poll2"> <label for="poll2">{{poll.option2}}<label> </div>
+                    <div style="margin-left:10px"><input value="3" name="poll" type="radio" id="poll3"> <label for="poll3">{{poll.option3}}<label> </div>
+                    <div style="margin-left:10px"><input value="4" name="poll" type="radio" id="poll4"> <label for="poll4">{{poll.option4}}<label> </div>
+                </ul>
+                <input type="submit" value="Submit" />
+            </div>
+        </div>
+        
+        
+    </form>
+
+    <style>
+        .card{
+            margin-bottom: 1rem;
+        }
+        .card-container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .card-body a{
+            text-decoration: none;
+            border-radius: 50%;
+        }
+    </style>
+{% endblock %}

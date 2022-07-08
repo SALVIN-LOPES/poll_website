@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1 class="home_heading">home page</h1>
+<h4 class="total_polls">TOTAL POLLS AVAILABLE : {{length_polls}}</h4>
+{% if length_polls != 0 %}
+
+{% for poll in polls %}
+<!-- <section style="margin:10px"> 
+    <div>
+        <a href="{% url 'get_poll' poll.id %}"><h5>{{poll.index}}) {{poll.question}} ({{poll.name}}) </h5></a>
+    </div>
+</section> -->
+
+<!-- new home template card -->
+
+<div class="card_container " >
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">{{poll.index}}) {{poll.question}}</h5>
+        <p class="card-text"><h5>Created by : {{poll.name}}</h5></p>
+        </div>
+        <div class="card-body">
+        <!-- <a href="{% url 'get_poll' poll.id %}" style="text-decoration: none" class="card-link"><h3>vote</h3> </a> -->
+        <a class="btn button_custom btn-outline-primary" href="{% url 'get_poll' poll.id %}">Vote</a>
+        </div>
+    </div>
+</div>
+
+
+<style>
+
+
+.home_heading {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+.total_polls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    width: 30rem;
+    margin-bottom: 1rem;
+}
+.card_container{
+    display:flex;
+    flex-direction:row;
+    float: left;
+    margin:10px;
+} 
+button{
+    border-radius: 50%;
+}
+.button_custom a{
+    text-decoration: none;
+}
+</style>
+
+{% endfor %}
+
+{% else %}
+
+<h4>NO POLLS CREATED</h4>
+
+{% endif %}
+{% endblock %}
+
+
+
+
+
